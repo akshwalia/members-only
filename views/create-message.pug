@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+    h1 Post Message 
+    if user 
+        form(action='/create-message', method='POST')
+            label(for='title') Title: 
+            input(type='text', name='title', id='title', value=message? message.title : '')
+            br
+            label(for='body') Body: 
+            input(type='text', name='body', id='body', value=message? message.body : '')
+            br
+            input(type='submit', value='Submit')
+    else 
+        p You must be logged in to post a message. 
+        a(href='/log-in') Login
+        br
+        a(href='/sign-up') Sign Up

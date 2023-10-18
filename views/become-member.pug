@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    h1 Become a member 
+    
+    p 
+        strong To become a member you must answer the following question correctly.
+        | Billo Bagge Billiyan da ki karengi? Bagge Bagge Billiyan da ki karengi? (Hint: My mother's first name)
+    
+    form(action='/become-member', method='POST')
+        label(for='answer') Answer: 
+        input(type='text', name='answer', id='answer')
+        br
+        input(type='submit', value='Submit')

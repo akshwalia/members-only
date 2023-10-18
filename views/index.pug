@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  h1= title
+  p 
+    strong Welcome to #{title}
+
+  p Anyone who is logged in can post messages. But only members can see who posted what and when. 
+
+  
+  
+
+  if user
+    h2 Welcome, #{user.name}
+
+    if !user.is_member
+      a(href='/become-member') Become a Member
+      br
+    a(href='/create-message') Create Message
+    br
+    a(href='/log-out') Logout
+
+    h3 Messages
+    if user.is_member
+      br
+      for message in messages 
+        .message 
+          strong #{message.title} (#{message.author.name} #{message.date.toLocaleString()})
+          br
+          div #{message.body}  
+    else 
+      br
+      for message in messages 
+        .message 
+          strong #{message.title} 
+          br
+          div #{message.body}
+      
+  else
+    a(href='/log-in') Login
+    br
+    a(href='/sign-up') Sign Up
+    
+    h3 Messages
+    for message in messages 
+      .message 
+        strong #{message.title}
+        br
+        div #{message.body}
+
+  

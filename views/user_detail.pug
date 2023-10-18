@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+    h1 Dashboard 
+
+    h3 Hello there, #{user.name}
+
+    strong The following are the messages posted by you: 
+
+    for message in messages 
+        .user_message 
+            strong #{message.title} (#{message.date})
+            br
+            p #{message.body}
+            hr
